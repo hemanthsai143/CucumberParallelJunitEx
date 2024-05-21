@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="13.75">
+    <testcase classname="Home Loan calculator" name="Verify user is able to estimate loan by using loan calculator in ANZ portal." time="13.323">
+        <system-out><![CDATA[Given user launches the browser with base url...............................passed
+When user enters all the details for estimation.............................passed
+]]></system-out>
+    </testcase>
+</testsuite>
