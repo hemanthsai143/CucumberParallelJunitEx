@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import context.TestContext;
 import io.cucumber.java.After;
@@ -44,13 +45,29 @@ public class Hooks {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String browserName=System.getProperty("browser"); //To pass the browser name from maven command
+		//String browserName=prop.getProperty("browser");
+		System.out.println("browserName"+browserName);
+		if(browserName.equalsIgnoreCase("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver",prop.getProperty("chromedriverPath"));
+			ChromeOptions ch=new ChromeOptions();
+			ch.setHeadless(false);
+			driver = new ChromeDriver(ch);
+			System.out.println("Driver initalized");
+	        testcontext.setDriver(driver);
+      }
 		
-		System.setProperty("webdriver.chrome.driver",prop.getProperty("chromedriverPath"));
-		ChromeOptions ch=new ChromeOptions();
-		ch.setHeadless(false);
-		driver = new ChromeDriver(ch);
-		System.out.println("Driver initalized");
-        testcontext.setDriver(driver);
+		else if(browserName.equalsIgnoreCase("IE"))
+		{
+			System.setProperty("webdriver.ie.driver",prop.getProperty("IEdriverPath"));
+			
+			driver = new InternetExplorerDriver();
+			System.out.println("Driver initalized");
+	        testcontext.setDriver(driver);
+      }
+
+		
     }
 	
 	@After
@@ -60,6 +77,8 @@ public class Hooks {
 		byte[] screenshot=ts.getScreenshotAs(OutputType.BYTES);
 		sc.attach(screenshot, "image/png", "screenshotattached");
 		driver.close();
+		
+		
 
 		}
 

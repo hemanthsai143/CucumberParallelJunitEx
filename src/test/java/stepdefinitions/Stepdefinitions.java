@@ -44,7 +44,9 @@ public TestContext testcontext;
 		 
 		
 	    
-        driver.get("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
+//        driver.get("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
+        driver.get("https://google.com");
+
         driver.manage().window().maximize();
 
 	}
